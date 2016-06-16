@@ -1,25 +1,23 @@
-# fovjs
+# fov.js
 ### field of vision calculation library
 
-fovjs calculates fields of view on low resolution rasters, suitable for roguelike games.
+fov.js calculates fields of view on low resolution rasters, suitable for
+roguelike games.
 
-![demo image](http://libris.nornagon.net/jca/libfov-1.0.3-demo.png)
+![Screenshot](screenshot.png)
 
-fovjs is based on [libfov](http://code.google.com/p/libfov), by @puyo.
+fov.js is based on the C library [libfov](http://code.google.com/p/libfov).
 
 ## Example
 
 ```javascript
 var fov_settings = {
-	shape: fov.SHAPE_CIRCLE,
 	opaque: function (map, x, y) { return isOpaque(map.at(x,y)) },
 	apply: function (map, x, y) { return map.at(x,y).visible = true },
 	opaque_apply: true
 }
 fov.circle(fov_settings, map, game.player.x, game.player.y, 30)
 ```
-
-Valid shapes currently are `SHAPE_CIRCLE` and `SHAPE_OCTAGON`.
 
 The `opaque` function specified in the settings object will be called to
 determine whether the tile at (x,y) is opaque. The `apply` function will be
