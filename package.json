@@ -1,0 +1,32 @@
+{
+  "name": "fov.js",
+  "version": "1.0.0",
+  "description": "Calculates fields of view on low resolution rasters, suitable for roguelike games",
+  "main": "fov.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:puyo/fov.js.git"
+  },
+  "author": "Gregory McIntyre <greg@gregorymcintyre.com>",
+  "contributors": [
+    {
+      "name": "Jeremy Apthorp",
+      "email": "nornagon@nornagon.net"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/puyo/fov.js/issues"
+  },
+  "homepage": "https://github.com/puyo/fov.js#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}

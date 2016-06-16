@@ -32,7 +32,7 @@
  *	- sx, sy: the co-ordinates of the source of light
  */
 
-fov = (function () {
+(function (exports) {
 
 var FLT_EPSILON = 1e-8;
 
@@ -293,10 +293,8 @@ function fov_beam2(settings, map, source_x, source_y, radius, angle, spread) {
 	}
 }
 
-return {
-	circle: fov_circle,
-	beam: fov_beam,
-	beam2: fov_beam2,
-};
+exports.circle = fov_circle
+exports.beam = fov_beam
+exports.beam2 = fov_beam2
 
-})();
+})(typeof exports === 'undefined' ? this['fov'] = {} : exports);
