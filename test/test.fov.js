@@ -113,5 +113,42 @@ describe('fov', () => {
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
             ].join("\n"))
         })
+
+        it('should block light reaching a wall behind', () => {
+            expect(run('circle', 40, true, [
+                '############################',
+                '............................',
+                '............................',
+                '..#.........................',
+                '@...........................',
+                '............................',
+            ])).to.equal([
+                'xxxxx#############xxxxxxxxxx',
+                'xxxx.........xxxxxxxxxxxxxxx',
+                'xxx.....xxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                '@xxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+            ].join("\n"))
+        })
+
+        it('should work with alternating walls and spaces', () => {
+            expect(run('circle', 40, true, [
+                '############################',
+                '............................',
+                '............................',
+                '#.#.#.#.#.#.#.#.#.#.#.#.#.#.',
+                '............................',
+                '............@...............',
+            ])).to.equal([
+                '########xxxx##xxx###########',
+                '.........xxx.xxx............',
+                '..........xx.xx.............',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxx@xxxxxxxxxxxxxxx',
+            ].join("\n"))
+        })
+
     })
 })
