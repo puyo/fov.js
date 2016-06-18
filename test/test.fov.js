@@ -1,15 +1,14 @@
 const expect = require('chai').expect
 const unpad = (s) => s.replace(/[ ]+/g, '').replace(/^\n/, '')
-
 const fov = require('../fov.js')
 
 function run(shape, size, opaqueApply, map) {
-    var w = map[0].length
-    var h = map.length
+    const w = map[0].length
+    const h = map.length
     map = map.map(row => row.split(''))
-    var py = map.findIndex(row => row.indexOf('@') !== -1)
-    var px = map[py].indexOf('@')
-    var fov_settings = {
+    const py = map.findIndex(row => row.indexOf('@') !== -1)
+    const px = map[py].indexOf('@')
+    const fov_settings = {
         shape: 'circle',
         opaque: (map, x, y) => {
             return y < 0 || y >= h || x < 0 || x >= w || map[y][x] === '#'
@@ -19,7 +18,7 @@ function run(shape, size, opaqueApply, map) {
                 map[y][x] = 'x'
             }
         },
-        opaque_apply: opaqueApply,
+        opaque_apply: opaqueApply
     }
     fov[shape](fov_settings, map, px, py, size);
     map = map.map(row => row.join('')).join("\n")
@@ -42,7 +41,7 @@ describe('fov', () => {
                 '......................',
                 '......................',
                 '......................',
-                '......................',
+                '......................'
             ])).to.equal([
                 '........xxxxxxx.......',
                 '.......xxxxxxxxx......',
@@ -56,7 +55,7 @@ describe('fov', () => {
                 '.....xxxxxxxxxxxxx....',
                 '......xxxxxxxxxxx.....',
                 '.......xxxxxxxxx......',
-                '........xxxxxxx.......',
+                '........xxxxxxx.......'
             ].join("\n"))
         })
 
@@ -67,14 +66,14 @@ describe('fov', () => {
                 '...............',
                 '...............',
                 '...............',
-                '@#.............',
+                '@#.............'
             ])).to.equal([
                 'xxxxx..........',
                 'xxxxxx.........',
                 'xxxxxxx........',
                 'xxxxxxx........',
                 'xxxxxxx........',
-                '@x.............',
+                '@x.............'
             ].join("\n"))
         })
 
@@ -85,14 +84,14 @@ describe('fov', () => {
                 '...............',
                 '...............',
                 '...............',
-                '@#.............',
+                '@#.............'
             ])).to.equal([
                 'xxxxx..........',
                 'xxxxx..........',
                 'xxxx...........',
                 'xxx............',
                 'xx.............',
-                '@#.............',
+                '@#.............'
             ].join("\n"))
         })
 
@@ -103,14 +102,14 @@ describe('fov', () => {
                 '............................',
                 '............................',
                 '@...........................',
-                '.###########################',
+                '.###########################'
             ])).to.equal([
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 '@xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx'
             ].join("\n"))
         })
 
@@ -121,14 +120,14 @@ describe('fov', () => {
                 '............................',
                 '..#.........................',
                 '@...........................',
-                '............................',
+                '............................'
             ])).to.equal([
                 'xxxxx#############xxxxxxxxxx',
                 'xxxx.........xxxxxxxxxxxxxxx',
                 'xxx.....xxxxxxxxxxxxxxxxxxxx',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 '@xxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxxxxxxxxxxxxxxxxxx'
             ].join("\n"))
         })
 
@@ -139,14 +138,14 @@ describe('fov', () => {
                 '............................',
                 '#.#.#.#.#.#.#.#.#.#.#.#.#.#.',
                 '............................',
-                '............@...............',
+                '............@...............'
             ])).to.equal([
                 '########xxxx##xxx###########',
                 '.........xxx.xxx............',
                 '..........xx.xx.............',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-                'xxxxxxxxxxxx@xxxxxxxxxxxxxxx',
+                'xxxxxxxxxxxx@xxxxxxxxxxxxxxx'
             ].join("\n"))
         })
 
